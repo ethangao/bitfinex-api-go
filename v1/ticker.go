@@ -1,9 +1,7 @@
 package bitfinex
 
 import (
-	"strconv"
 	"strings"
-	"time"
 )
 
 type TickerService struct {
@@ -18,17 +16,6 @@ type Tick struct {
 	Low       string
 	High      string
 	Volume    string
-	Timestamp string
-}
-
-// ParseTime - return Timestamp in time.Time format
-func (el *Tick) ParseTime() (*time.Time, error) {
-	i, err := strconv.ParseFloat(el.Timestamp, 64)
-	if err != nil {
-		return nil, err
-	}
-	t := time.Unix(int64(i), 0)
-	return &t, nil
 }
 
 // Get(pair) - return last Tick for specified pair
